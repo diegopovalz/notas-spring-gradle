@@ -37,13 +37,7 @@ public class MapeadorNota {
 
     public List<NotaDTO> listaNotasANotaDto(List<Nota> notas) {
         return notas.stream()
-                .map(n -> NotaDTO
-                        .builder()
-                        .id(n.getId())
-                        .descripcion(n.getDescripcion())
-                        .fecha(formato.format(n.getFecha()))
-                        .build()
-                )
+                .map(n -> entidadADto(n))
                 .collect(Collectors.toList());
     }
 }
