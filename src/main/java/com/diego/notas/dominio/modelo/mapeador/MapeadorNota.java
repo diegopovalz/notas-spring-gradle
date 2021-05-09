@@ -1,6 +1,7 @@
 package com.diego.notas.dominio.modelo.mapeador;
 
 import com.diego.notas.dominio.dto.NotaDTO;
+import com.diego.notas.dominio.excepcion.ExcepcionFormatoIncorrecto;
 import com.diego.notas.dominio.modelo.Nota;
 import org.springframework.stereotype.Component;
 
@@ -22,9 +23,8 @@ public class MapeadorNota {
                     .fecha(formato.parse(notaDTO.getFecha()))
                     .build();
         } catch (ParseException e) {
-            e.printStackTrace();
+            throw new ExcepcionFormatoIncorrecto("Formato de fecha incorrecto, se esperaba dd/MM/yyyy");
         }
-        return null;
     }
 
     public NotaDTO entidadADto(Nota nota) {
