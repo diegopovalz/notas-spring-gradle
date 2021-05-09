@@ -2,6 +2,8 @@ package com.diego.notas.dominio.modelo.utils;
 
 public class Validador {
 
+    private Validador() { }
+
     public static void validarNoNulo(Object value, String name) {
         if(value == null) {
             throw new RuntimeException(name + " no puede ser nulo");

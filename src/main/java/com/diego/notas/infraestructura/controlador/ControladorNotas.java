@@ -24,9 +24,9 @@ public class ControladorNotas {
     }
 
     @PostMapping("")
-    public ResponseEntity<NotaDTO> guardarNota(@RequestBody NotaDTO nota) {
-        NotaDTO _nota = this.servicioGuardarNota.ejecutar(nota);
-        return new ResponseEntity<>(_nota, HttpStatus.OK);
+    public ResponseEntity<NotaDTO> guardarNota(@RequestBody NotaDTO notaDTO) {
+        NotaDTO nota = this.servicioGuardarNota.ejecutar(notaDTO);
+        return new ResponseEntity<>(nota, HttpStatus.OK);
     }
 
     @GetMapping("/nota/{id}")

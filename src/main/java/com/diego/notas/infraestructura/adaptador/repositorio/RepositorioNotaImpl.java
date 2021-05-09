@@ -33,6 +33,6 @@ public class RepositorioNotaImpl implements RepositorioNota {
     public NotaDTO guardar(NotaDTO notaDTO) {
         Nota nota = mapeadorNota.dtoAEntidad(notaDTO);
         Nota notaTemporal = this.repositorio.save(nota);
-        return mapeadorNota.entidadADto(nota);
+        return mapeadorNota.entidadADto(notaTemporal);
     }
 }

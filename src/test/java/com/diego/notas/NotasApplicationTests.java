@@ -28,7 +28,7 @@ class NotasApplicationTests {
     @Autowired private ObjectMapper objectMapper;
 
     @Test
-    public void deberiaGuardarNotaYDevolverIdYFecha() throws Exception {
+    void deberiaGuardarNotaYDevolverIdYFecha() throws Exception {
         Date fechaPrestamo = Calendar.getInstance().getTime();
         DateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
         String fechaRegistro = formato.format(fechaPrestamo);

@@ -16,12 +16,14 @@ public class ManejadorError {
     @ExceptionHandler(ExcepcionFormatoIncorrecto.class)
     public final ResponseEntity<Error> manejarErrorFormato(ExcepcionFormatoIncorrecto e) {
         Error error = new Error(e.getMessage());
+        log.error(e.getMessage());
         return new ResponseEntity<>(error, HttpStatus.CONFLICT);
     }
 
     @ExceptionHandler(Exception.class)
     public final ResponseEntity<Error> manejarExcepcion(Exception e) {
         Error error = new Error(e.getMessage());
+        log.error(e.getMessage());
         return new ResponseEntity<>(error, HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }
