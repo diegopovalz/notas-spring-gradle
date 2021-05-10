@@ -1,6 +1,7 @@
 package com.diego.notas.infraestructura.controlador.error;
 
 import com.diego.notas.dominio.excepcion.ExcepcionFormatoIncorrecto;
+import com.diego.notas.dominio.excepcion.ExcepcionValorNoValido;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -18,6 +19,13 @@ public class ManejadorError {
         Error error = new Error(e.getMessage());
         log.error(e.getMessage());
         return new ResponseEntity<>(error, HttpStatus.CONFLICT);
+    }
+
+    @ExceptionHandler(ExcepcionValorNoValido.class)
+    public final ResponseEntity<Error> manejarErrorValidacion(ExcepcionValorNoValido e) {
+        Error error = new Error(e.getMessage());
+        log.error(e.getMessage());
+        return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(Exception.class)
