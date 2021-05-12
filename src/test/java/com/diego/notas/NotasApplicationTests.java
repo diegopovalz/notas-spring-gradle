@@ -12,7 +12,6 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 
 import static org.hamcrest.core.Is.is;
@@ -29,7 +28,7 @@ class NotasApplicationTests {
 
     @Test
     void deberiaGuardarNotaYDevolverIdYFecha() throws Exception {
-        Date fechaPrestamo = Calendar.getInstance().getTime();
+        Date fechaPrestamo = new Date();
         DateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
         String fechaRegistro = formato.format(fechaPrestamo);
 
