@@ -8,4 +8,5 @@ import java.util.List;
 public interface RepositorioNota {
     List<NotaDTO> listar();
     NotaDTO guardar(NotaDTO nota);
+    NotaDTO encontrar(Long id);
 }
