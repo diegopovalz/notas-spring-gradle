@@ -33,7 +33,7 @@ class NotasApplicationTests {
         String fechaRegistro = formato.format(fechaPrestamo);
 
         MvcResult resultadoNotaRegistrada = mvc.perform(
-                MockMvcRequestBuilders.post("/notas")
+                MockMvcRequestBuilders.post("/notas/nota")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(new RegistroNotaTest("Prueba de Test 2", fechaRegistro))))
                 .andExpect(status().isOk())
@@ -44,13 +44,13 @@ class NotasApplicationTests {
         ResultadoNotaTest resultado = objectMapper.readValue(resultadoNotaRegistrada.getResponse().getContentAsString(), ResultadoNotaTest.class);
 
         mvc.perform(MockMvcRequestBuilders
-                .get("/notas/nota/" + resultado.getId().intValue())
+                .get("/notas/" + resultado.getId().intValue())
                 .accept(MediaType.APPLICATION_JSON))
                 .andDo(print())
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$[0].id").exists())
-                .andExpect(jsonPath("$[0].descripcion").exists())
-                .andExpect(jsonPath("$[0].fecha", is(fechaRegistro)));
+                .andExpect(jsonPath("$.id").exists())
+                .andExpect(jsonPath("$.descripcion").exists())
+                .andExpect(jsonPath("$.fecha", is(fechaRegistro)));
     }
 
 }
